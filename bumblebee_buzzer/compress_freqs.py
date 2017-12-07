@@ -4,7 +4,9 @@ with open('standard_freqs', 'r') as f:
     c = '!'
     for line in f:
         notes_to_chars[int(line.strip())] = c
-        c = chr(ord(c)+1)
+        c = chr(ord(c[0])+1)
+        if c == '\\':
+            c = '\\\\'
 
 for k in sorted(notes_to_chars.keys()):
     print "%s: %s || " % (k, notes_to_chars[k]),
